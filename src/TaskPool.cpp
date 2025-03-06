@@ -129,8 +129,7 @@ void TaskPool::EnqueueImpl(PackagedTask packedTask)
 void TaskPool::Process(const std::uint32_t id, const std::uint32_t coprime)
 {
     ++registeredThreadCount_;
-    auto& q = *taskQueues_[id];
-    // std::uint32_t dequeuePointer = id;
+    auto&         q           = *taskQueues_[id];
     std::uint32_t spinCounter = 1;
     while (true)
     {
