@@ -1,0 +1,8 @@
+.idea
+*.log
+build/
+cmake-build-debug
+cmake-build-release
+CMakeFiles
+cmake-build-release-coverage
+cmake-build-debug-coverage
