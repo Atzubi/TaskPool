@@ -6,7 +6,7 @@ namespace
 {
     std::atomic_uint64_t counter;
 
-    void Task(std::uint64_t* argument) { counter += *argument; }
+    void Increment(void* argument) { counter += *reinterpret_cast<std::atomic_uint64_t*>(argument); }
 } // namespace
 
 TEST_CASE("Sanity Check")
@@ -25,7 +25,7 @@ TEST_CASE("Sanity Check")
         TaskPool threadPool{};
         for (auto& number : numbers)
         {
-            threadPool.Enqueue(Task, &number);
+            threadPool.Enqueue(TaskPool::Task{Increment, &number});
         }
     }
 
